@@ -1,17 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <title>Esme website</title>
     <link rel="stylesheet" href="page.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-
 <body>
-    <h1>Hello world</h1>
+    <div id="main-page">
+        <!-- top navigation menu -->
+        <div class="topnav">
+            <a class="active" href="#home">HOME</a>
+            <a href="#about">ABOUT</a>
+        </div>
 
-    <button id="test" onclick="changecolor();">Pull the switch</button>
+        <section class="container">
+            <div class="content">
+                <article>
+                    <h1 class="title">Kalkulator kredytu hipotecznego</h1>
+                    <!-- <div id="menu">STRONA GŁÓWNA</div> -->
+                    <!-- <button id="test" onclick="changecolor();">Pull the switch</button> -->
+
+                    <section>
+                        <form novalidate action="#" method="get" class="form-example">
+                            <div class="form-part">
+                                <h2 class="subtitle">Dane podstawowe</h2>
+                                <div class="form-row">
+                                    <label for="credit-value" class="label-left-column">Kwota kredytu:</label>
+                                    <div class="label-right-column">
+                                        <input name="credit-value" required pattern="/^[+]?(?!0\d)[0-9]*\.?[0-9]+$/" id="credit-value" type="number">
+                                        <div class="valid-feedback">Pole wymagane</div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <label for="credit-duration" class="label-left-column">Okres spłaty:</label>
+                                    <div class="label-right-column">
+                                        <input name="credit-duration" required pattern="/^[+]?(?!0\d)[0-9]*\.?[0-9]+$/" id="credit-duration" type="number">
+                                        <div class="valid-feedback">Pole wymagane</div>
+                                    </div>
+                                </div>
+                                <div class="form-row-select-field">
+                                    <label for="rate-type" class="label-left-column">Rata:</label>
+                                    <div class="label-right-column">
+                                        <div class="form-group">
+                                            <select name="rate-type" id="rate-type" class="form-select-field">
+                                                <option value="constant">stała</option>
+                                                <option value="decreasing">malejąca</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <label for="bank-margin" class="label-left-column">Marża banku [%]:</label>
+                                    <div class="label-right-column">
+                                        <input name="bank-margin" required pattern="/^[+]?(?!0\d)[0-9]*\.?[0-9]+$/" id="bank-margin" type="number">
+                                        <div class="valid-feedback">Pole wymagane</div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <label for="wibor-start" class="label-left-column">Wibor aktualny [%]:</label>
+                                    <div class="label-right-column">
+                                        <input name="wibor-start" required pattern="/^[+]?(?!0\d)[0-9]*\.?[0-9]+$/" id="wibor-start" type="number">
+                                        <div class="valid-feedback">Pole wymagane</div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <label for="service-charge" class="label-left-column">Prowizja banku [%]:</label>
+                                    <div class="label-right-column">
+                                        <input name="service-charge" required pattern="/^[+]?(?!0\d)[0-9]*\.?[0-9]+$/" id="service-charge" type="number">
+                                        <div class="valid-feedback">Pole wymagane</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div style="padding: 10px;"></div>
+                            <div class="form-part">
+                                <h2 class="subtitle">Dane dodatkowe</h2>
+                                <div class="form-row">
+                                    <label for="first-rate-day" class="label-left-column">Miesiąc pierwszej raty:</label>
+                                    <div class="label-right-column">
+                                        <input name="first-rate-day" id="first-rate-day" type="date">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <label for="wibor-change" class="label-left-column">Zmiana Wiboru:</label>
+                                    <div class="right-column-button">
+                                        <button type="button" class="button-adding">Dodaj zmianę</button>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <label for="surcharge" class="label-left-column">Nadpłaty:</label>
+                                    <div class="right-column-button">
+                                        <button type="button" class="button-adding">Dodaj nadpłatę</button>
+                                    </div>
+                                    <!-- <div class="form-group">
+
+                                    </div> -->
+                                    
+                                </div>
+                            </div>
+                            <div class="primary-btn">
+                                <button type="button" id="count-btn" onclick="myCalculate();">Oblicz</button>
+                            </div>
+                        </form>
+                    </section>
+
+                    <section>
+                        <div class="graphic-results">
+                            <header>
+                                <h2 class="subtitle">Twoje wyniki</h2>
+                                <h4>
+                                    Raty: 
+                                    malejące
+                                </h4>
+                            </header>
+                            <div class="results">
+
+                            </div>
+                        </div>
+                        <div style="padding: 20px;"></div>
+                        <div class="form-part-summary">
+                            <section>
+                                <header>
+                                    <h2 class="subtitle">Podsumowanie</h2>
+                                </header>
+                                <table class="table-summary table">
+                                    <tbody>
+                                        <tr>
+                                            <th>Kwota kredytu:</th>
+                                            <td><span id="credit-value-result"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Odsetki do spłaty:</th>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Prowizja:</th>
+                                            <td><span id="commission-result"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Całkowity koszt kredytu:</th>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Razem:</th>
+                                            <td><span id="result"></span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <!-- <div style="padding: 5px;"></div> -->
+                            </section>
+                        </div>
+                        <div style="padding: 10px;"></div>
+                    </section>
+
+                </article>
+            </div>
+        </section>
+
+
+        <footer class="footer">
+            <p>Author: EsmeWax<br>
+            <a href="mailto:EsmeWax@gmail.com">EsmeWax@gmail.com</a></p>
+        </footer>
+    </div>
 
     <script src="page.js"></script>
 </body>
-
 </html>

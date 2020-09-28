@@ -27,14 +27,14 @@
                                 <div class="form-row">
                                     <label for="credit-value" class="label-left-column">Kwota kredytu:</label>
                                     <div class="label-right-column">
-                                        <input name="credit-value" required pattern="/^[+]?(?!0\d)[0-9]*\.?[0-9]+$/" id="credit-value" type="number">
+                                        <input name="credit-value" required pattern="/^[+]?(?!0\d)[0-9]*\.?[0-9]+$/" id="credit-value" type="number" value="400000">
                                         <div class="valid-feedback">Pole wymagane</div>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <label for="credit-duration" class="label-left-column">Okres spłaty:</label>
                                     <div class="label-right-column">
-                                        <input name="credit-duration" required pattern="/^[+]?(?!0\d)[0-9]*\.?[0-9]+$/" id="credit-duration" type="number">
+                                        <input name="credit-duration" required pattern="/^[+]?(?!0\d)[0-9]*\.?[0-9]+$/" id="credit-duration" type="number" value="240">
                                         <div class="valid-feedback">Pole wymagane</div>
                                     </div>
                                 </div>
@@ -52,21 +52,21 @@
                                 <div class="form-row">
                                     <label for="bank-margin" class="label-left-column">Marża banku [%]:</label>
                                     <div class="label-right-column">
-                                        <input name="bank-margin" required pattern="/^[+]?(?!0\d)[0-9]*\.?[0-9]+$/" id="bank-margin" type="number">
+                                        <input name="bank-margin" required pattern="/^[+]?(?!0\d)[0-9]*\.?[0-9]+$/" id="bank-margin" type="number" value="1.5">
                                         <div class="valid-feedback">Pole wymagane</div>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <label for="wibor-start" class="label-left-column">Wibor aktualny [%]:</label>
                                     <div class="label-right-column">
-                                        <input name="wibor-start" required pattern="/^[+]?(?!0\d)[0-9]*\.?[0-9]+$/" id="wibor-start" type="number">
+                                        <input name="wibor-start" required pattern="/^[+]?(?!0\d)[0-9]*\.?[0-9]+$/" id="wibor-start" type="number" value="1.5">
                                         <div class="valid-feedback">Pole wymagane</div>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <label for="service-charge" class="label-left-column">Prowizja banku [%]:</label>
                                     <div class="label-right-column">
-                                        <input name="service-charge" required pattern="/^[+]?(?!0\d)[0-9]*\.?[0-9]+$/" id="service-charge" type="number">
+                                        <input name="service-charge" required pattern="/^[+]?(?!0\d)[0-9]*\.?[0-9]+$/" id="service-charge" type="number" value="0.5">
                                         <div class="valid-feedback">Pole wymagane</div>
                                     </div>
                                 </div>
@@ -131,7 +131,7 @@
                                         </tr>
                                         <tr>
                                             <th>Odsetki do spłaty:</th>
-                                            <td></td>
+                                            <td><span id='interest-monthly-summmary-result'></span></td>
                                         </tr>
                                         <tr>
                                             <th>Prowizja:</th>

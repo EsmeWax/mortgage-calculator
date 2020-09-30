@@ -21,24 +21,27 @@ function myCalculate() {
     document.getElementById('interest-monthly-summmary-result').innerHTML = parseFloat(sumInterestMonthly).toFixed(2);
     // Bank commission calculation - "Prowizja"
     document.getElementById('commission-result').innerHTML = (creditValue * commission) / 100;
-    // "Całkowity koszt kredytu"
-    // "Razem"
-    document.getElementById('result').innerHTML = parseFloat(creditValue / creditDuration).toFixed(2);
-
-/* Object */
-    let installmentAmount = {
-        capitalPart: (creditValue/creditDuration),
-        interestPart: 1000,
-        summaryPart: function() {
-                return this.capitalPart + this.interestPart;
-            }
-    };
-/* MAP */
-    let map1 = new Map([["2020-08", installmentAmount]]);
-    console.log(map1);
+    // "Całkowity koszt kredytu" - odsetki do spłaty + prowizja
+    document.getElementById('total-cost-loan-result').innerHTML = parseFloat(sumInterestMonthly + ((creditValue * commission) / 100)).toFixed(2);
+    // "Razem" - całkowity koszt kredytu + kwota kredytu
+    document.getElementById('overall-result').innerHTML = parseFloat(parseFloat(creditValue) + sumInterestMonthly + ((creditValue * commission) / 100)).toFixed(2);
 
 /* wywołanie funkcji calc */
     calc(creditDuration, creditValue, percentage);
+
+/* Object */
+// let installmentAmount = {
+//     capitalPart: (creditValue/creditDuration),
+//     interestPart: 1000,
+//     summaryPart: function() {
+//             return this.capitalPart + this.interestPart;
+//         }
+// };
+    /* MAP zdefiniowanie mapy */
+        // let map1 = new Map([[1, myTableObject]]);
+        //     console.log(map1);
+
+
 }
 
 function calc (period, creditValue, percentage) {
@@ -55,8 +58,18 @@ function calc (period, creditValue, percentage) {
     let sumInterestMonthly = firstMonthInterest; 
 
     // wyswiatlenie pierwszego wiersza tabeli
-    console.log("1" + " : " + parseFloat(capitalMonthly).toFixed(2) + " : " + parseFloat(firstMonthInterest).toFixed(2) + " : " + parseFloat(firstMonthlyInstallment).toFixed(2) + " : " + parseFloat(creditValue).toFixed(2) + " : " + parseFloat(sumInterestMonthly).toFixed(2)); 
-
+    //console.log("1" + " : " + parseFloat(capitalMonthly).toFixed(2) + " : " + parseFloat(firstMonthInterest).toFixed(2) + " : " + parseFloat(firstMonthlyInstallment).toFixed(2) + " : " + parseFloat(creditValue).toFixed(2) + " : " + parseFloat(sumInterestMonthly).toFixed(2)); 
+    // Obiekt z pierwszym wierszem tabeli
+    let myFirstTableObject = {
+        capitalMonthly: parseFloat(capitalMonthly).toFixed(2),
+        interestMonthly: parseFloat(firstMonthInterest).toFixed(2),
+        monthlyInstallment: parseFloat(firstMonthlyInstallment).toFixed(2)
+    };
+    /* MAP - zdefiniowanie mapy */
+    let map1 = new Map();
+    // wypełnienie mapy pierwszym wierszem
+    map1.set(1, myFirstTableObject);
+    
     for(let i = 1; i < period; i++) {
         // obliczenia aktualnej kwoty kredytu
         currentCreditValue = currentCreditValue - capitalMonthly;
@@ -68,8 +81,19 @@ function calc (period, creditValue, percentage) {
         sumInterestMonthly = interestMonthly + sumInterestMonthly;
 
         //tu inicjalizuje obiekt installmentAmount zamiast console.log
-        console.log(i+1 + " : " + parseFloat(capitalMonthly).toFixed(2) + " : " + parseFloat(interestMonthly).toFixed(2) + " : " + parseFloat(monthlyInstallment).toFixed(2) + " : " + parseFloat(currentCreditValue).toFixed(2) + " : " + parseFloat(sumInterestMonthly).toFixed(2));  
+        //console.log(i+1 + " : " + parseFloat(capitalMonthly).toFixed(2) + " : " + parseFloat(interestMonthly).toFixed(2) + " : " + parseFloat(monthlyInstallment).toFixed(2) + " : " + parseFloat(currentCreditValue).toFixed(2) + " : " + parseFloat(sumInterestMonthly).toFixed(2));  
+
+        // wypełnianie obiektu 
+        let myTableObject = {
+            capitalMonthly: parseFloat(capitalMonthly).toFixed(2),
+            interestMonthly: parseFloat(interestMonthly).toFixed(2),
+            monthlyInstallment: parseFloat(monthlyInstallment).toFixed(2)
+        };
+        // intercyjne dodawanie obiektów do mapy
+        map1.set(i+1, myTableObject);
     }
+
+console.log(map1);
 };
 
 /* suma odsetek */

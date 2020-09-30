@@ -156,14 +156,21 @@ instead of horiz on screens that are less than 800px wide */
     vertical-align: middle;
     border-top: 1px solid #dee2e6;
 }
-th {
+.summary-header {
     text-align: inherit;
 }
+
+th {
+    text-align: center;
+}
+
 td {
     text-align: center;
 }
 
-
+.result-data {
+    text-align: center;
+}
 
 footer {
     display: block;

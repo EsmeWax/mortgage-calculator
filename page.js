@@ -27,21 +27,14 @@ function myCalculate() {
     document.getElementById('overall-result').innerHTML = parseFloat(parseFloat(creditValue) + sumInterestMonthly + ((creditValue * commission) / 100)).toFixed(2);
 
 /* wywołanie funkcji calc */
-    calc(creditDuration, creditValue, percentage);
+    let myMap = calc(creditDuration, creditValue, percentage);
 
-/* Object */
-// let installmentAmount = {
-//     capitalPart: (creditValue/creditDuration),
-//     interestPart: 1000,
-//     summaryPart: function() {
-//             return this.capitalPart + this.interestPart;
-//         }
-// };
-    /* MAP zdefiniowanie mapy */
-        // let map1 = new Map([[1, myTableObject]]);
-        //     console.log(map1);
+    // Wygenerowanie dynamicznej tabeli na bazie mapy
+    let dataHeader = ["L.p", "Rata kapitałowa", "Odsetki", "Rata miesięczna"];
+    let table = document.querySelector(".table-summary table");
+    generateTable(table, myMap);
 
-
+    generateTableHead(table, dataHeader);
 }
 
 function calc (period, creditValue, percentage) {
@@ -93,7 +86,8 @@ function calc (period, creditValue, percentage) {
         map1.set(i+1, myTableObject);
     }
 
-console.log(map1);
+//console.log(map1);
+return map1;
 };
 
 /* suma odsetek */
@@ -117,4 +111,36 @@ function sumInterest(period, creditValue, percentage) {
         sumInterestMonthly = interestMonthly + sumInterestMonthly;
     }
     return sumInterestMonthly;
+};
+
+/* Wygenerowanie dynamicznej tabeli na bazie mapy */
+function generateTable(table, data) {
+// Zawartość pozostałych komórek
+    data.forEach(function(value, key) {
+        let row = table.insertRow();
+        let cell0 = row.insertCell();
+        let cell = row.insertCell();
+        let cell1 = row.insertCell();
+        let cell2 = row.insertCell();
+        let text0 = document.createTextNode(key);
+        let text = document.createTextNode(value.capitalMonthly);
+        let text1 = document.createTextNode(value.interestMonthly);
+        let text2 = document.createTextNode(value.monthlyInstallment);
+        cell0.appendChild(text0);
+        cell.appendChild(text);
+        cell1.appendChild(text1);
+        cell2.appendChild(text2);
+    });
+};
+
+function generateTableHead(table, data) {
+// Nagłówki tabeli
+    let thead = table.createTHead();
+    let row = thead.insertRow();
+    for (let i = 0; i < data.length; i++) {
+        let th = document.createElement("th");
+        let text = document.createTextNode(data[i]);
+        th.appendChild(text);
+        row.appendChild(th);
+    };
 };

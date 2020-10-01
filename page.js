@@ -1,6 +1,3 @@
-// function changecolor() {
-//     document.getElementById("count-btn").style.backgroundColor = "red";
-// }
 function myCalculate() {
 /* Dane Podstawowe */
     let creditValue = document.getElementById('credit-value').value;
@@ -29,25 +26,20 @@ function myCalculate() {
 /* wywołanie funkcji calc */
     let myMap = calc(creditDuration, creditValue, percentage);
 
-    // Wygenerowanie dynamicznej tabeli na bazie mapy
-    let dataHeader = ["L.p", "Rata kapitałowa", "Odsetki", "Rata miesięczna"];
-    let table = document.querySelector(".table-summary table");
-    generateTable(table, myMap);
-
-    generateTableHead(table, dataHeader);
+/* Wygenerowanie dynamicznej tabeli na bazie mapy */
+    removeTable();
+    generateTable(myMap);
 }
 
 function calc (period, creditValue, percentage) {
     // rata kapitałowa miesięczna
     let capitalMonthly = creditValue/period;
-
     let currentCreditValue = creditValue;
 
     // first month interest value - pierwsza rata odsetkowa
     let firstMonthInterest = (creditValue * (percentage / 100)) / 12;
     // first month installment value - pierwsza rata (kapital + odsetka)
     let firstMonthlyInstallment = capitalMonthly + firstMonthInterest;
-
     let sumInterestMonthly = firstMonthInterest; 
 
     // wyswiatlenie pierwszego wiersza tabeli
@@ -85,8 +77,6 @@ function calc (period, creditValue, percentage) {
         // intercyjne dodawanie obiektów do mapy
         map1.set(i+1, myTableObject);
     }
-
-//console.log(map1);
 return map1;
 };
 
@@ -94,12 +84,10 @@ return map1;
 function sumInterest(period, creditValue, percentage) {
     // rata kapitałowa miesięczna
     let capitalMonthly = creditValue/period;
-
     let currentCreditValue = creditValue;
 
     // first month interest value - pierwsza rata odsetkowa
     let firstMonthInterest = (creditValue * (percentage / 100)) / 12;
-
     let sumInterestMonthly = firstMonthInterest; 
 
     for(let i = 1; i < period; i++) {
@@ -110,11 +98,12 @@ function sumInterest(period, creditValue, percentage) {
         // suma odsetek
         sumInterestMonthly = interestMonthly + sumInterestMonthly;
     }
-    return sumInterestMonthly;
+return sumInterestMonthly;
 };
 
 /* Wygenerowanie dynamicznej tabeli na bazie mapy */
-function generateTable(table, data) {
+function generateTable(data) {
+let table = document.querySelector(".table-summary table");
 // Zawartość pozostałych komórek
     data.forEach(function(value, key) {
         let row = table.insertRow();
@@ -131,16 +120,30 @@ function generateTable(table, data) {
         cell1.appendChild(text1);
         cell2.appendChild(text2);
     });
+    generateTableHead();
+//return table;
 };
 
-function generateTableHead(table, data) {
+function generateTableHead() {
+let table = document.querySelector(".table-summary table");
+let dataHeader = ["L.p", "Rata kapitałowa", "Odsetki", "Rata miesięczna"];
 // Nagłówki tabeli
     let thead = table.createTHead();
     let row = thead.insertRow();
-    for (let i = 0; i < data.length; i++) {
+    for (let i = 0; i < dataHeader.length; i++) {
         let th = document.createElement("th");
-        let text = document.createTextNode(data[i]);
+        let text = document.createTextNode(dataHeader[i]);
         th.appendChild(text);
         row.appendChild(th);
     };
+};
+
+function removeTable() {
+    //1 sprawdz czy tabela istnieje
+    //1.1 jesli tak, usun tabele
+    //1.2 jesli nie, nie usuwaj tabeli
+    let element = document.getElementById("result-table-summary");
+    while(element.firstChild) {
+        element.removeChild(element.firstChild);
+    }
 };

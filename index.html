@@ -16,10 +16,7 @@
         <section class="container">
             <div class="content">
                 <article>
-                    <h1 class="title">Kalkulator kredytu hipotecznego</h1>
-                    <!-- <div id="menu">STRONA GŁÓWNA</div> -->
-                    <!-- <button id="test" onclick="changecolor();">Pull the switch</button> -->
-
+                    <h1 class="title">Kalkulator kredytu hipotecznego</h1>               
                     <section>
                         <form novalidate action="#" method="get" class="form-example">
                             <div class="form-part">
@@ -70,11 +67,22 @@
                                         <div class="valid-feedback">Pole wymagane</div>
                                     </div>
                                 </div>
-
                             </div>
                             <div style="padding: 10px;"></div>
                             <div class="form-part">
                                 <h2 class="subtitle">Dane dodatkowe</h2>
+                                <div class="form-row">
+                                    <label for="fixed-fees" class="label-left-column">Opłaty stałe:</label>
+                                    <div class="right-column-button">
+                                        <button type="button" class="button-adding">Dodaj</button>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <label for="variable-fees" class="label-left-column">Opłaty zmienne:</label>
+                                    <div class="right-column-button">
+                                        <button type="button" class="button-adding">Dodaj</button>
+                                    </div>
+                                </div>
                                 <div class="form-row">
                                     <label for="first-rate-day" class="label-left-column">Miesiąc pierwszej raty:</label>
                                     <div class="label-right-column">
@@ -88,14 +96,10 @@
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <label for="surcharge" class="label-left-column">Nadpłaty:</label>
+                                    <label for="surcharge" class="label-left-column">Nadpłata:</label>
                                     <div class="right-column-button">
-                                        <button type="button" class="button-adding">Dodaj nadpłatę</button>
+                                        <button type="button" class="button-adding">Dodaj</button>
                                     </div>
-                                    <!-- <div class="form-group">
-
-                                    </div> -->
-                                    
                                 </div>
                             </div>
                             <div class="primary-btn">

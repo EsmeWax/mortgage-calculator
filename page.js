@@ -7,60 +7,60 @@ function myCalculate() {
     let bankMargin = document.getElementById('bank-margin').value;
     let wiborStart = document.getElementById('wibor-start').value;
     let percentage = parseFloat(bankMargin) + parseFloat(wiborStart);
+/* Dane dodatkowe */
 
-/* wywołanie funkcji sumInterest */
-    let sumInterestMonthly = sumInterest(creditDuration, creditValue, percentage);
-
-/* wywałanie funkci sumInterestConst */
-    let sumInterestMonthlyConst = sumInterestConst(creditDuration, creditValue, percentage);
 
 /* Podsumowanie */
     // Credit value - "kwota kredytu"
     document.getElementById('credit-value-result').innerHTML = creditValue;
     // Bank commission calculation - "Prowizja"
     document.getElementById('commission-result').innerHTML = (creditValue * commission) / 100;
-    
-    /* Rata stała */
-    // "Odsetki do spłaty" - suma całkowita dla rat stałych
-    document.getElementById('interest-monthly-summmary-result').innerHTML = parseFloat(sumInterestMonthlyConst).toFixed(2);
-    // "Całkowity koszt kredytu" - odsetki do spłaty + prowizja
-    document.getElementById('total-cost-loan-result').innerHTML = parseFloat(sumInterestMonthlyConst + ((creditValue * commission) / 100)).toFixed(2);
-    // "Razem" - całkowity koszt kredytu + kwota kredytu
-    document.getElementById('overall-result').innerHTML = parseFloat(parseFloat(creditValue) + sumInterestMonthlyConst + ((creditValue * commission) / 100)).toFixed(2);
 
+/* wywołanie funkcji sumInterest */
+    let sumInterestMonthly = sumInterest(creditDuration, creditValue, percentage);
+/* wywałanie funkci sumInterestConst */
+    let sumInterestMonthlyConst = sumInterestConst(creditDuration, creditValue, percentage);
 
-    /* Rata malejąca */
-    // "Odsetki do spłaty" - całkowita suma
-    document.getElementById('interest-monthly-summmary-result').innerHTML = parseFloat(sumInterestMonthly).toFixed(2);
-    // "Całkowity koszt kredytu" - odsetki do spłaty + prowizja
-    document.getElementById('total-cost-loan-result').innerHTML = parseFloat(sumInterestMonthly + ((creditValue * commission) / 100)).toFixed(2);
-    // "Razem" - całkowity koszt kredytu + kwota kredytu
-    document.getElementById('overall-result').innerHTML = parseFloat(parseFloat(creditValue) + sumInterestMonthly + ((creditValue * commission) / 100)).toFixed(2);
+/* Warunek wywołania funkcji - wybór typu rat */
+    let sel = document.getElementById("rate-type");
+        if(sel.value == 'constant') {
+        /* wywołanie funkcji calcConstant */
+            let myMap = calcConstant(creditDuration, creditValue, percentage);
 
-    
+        /* Podsumowanie - raty stałe */
+            // "Odsetki do spłaty" - suma całkowita rat
+            document.getElementById('interest-monthly-summmary-result').innerHTML = parseFloat(sumInterestMonthlyConst).toFixed(2);
+            // "Całkowity koszt kredytu" - odsetki do spłaty + prowizja
+            document.getElementById('total-cost-loan-result').innerHTML = parseFloat(sumInterestMonthlyConst + ((creditValue * commission) / 100)).toFixed(2);
+            // "Razem" - całkowity koszt kredytu + kwota kredytu
+            document.getElementById('overall-result').innerHTML = parseFloat(parseFloat(creditValue) + sumInterestMonthlyConst + ((creditValue * commission) / 100)).toFixed(2);
 
-/* Warunek wywołania funkcji */
-let sel = document.getElementById("rate-type");
-if(sel.value == 'constant') {
-    /* wywołanie funkci calcConstant */
-    let myMap = calcConstant(creditDuration, creditValue, percentage);
-    /* wywołanie funkcji removeTable() */
-    removeTable();
-    /* Wygenerowanie dynamicznej tabeli na bazie mapy */
-    generateTable(myMap);
-}
-else {
-    /* wywołanie funkcji calc */
-    let myMap = calc(creditDuration, creditValue, percentage);
-    /* wywołanie funkcji removeTable() */
-    removeTable();
-    /* Wygenerowanie dynamicznej tabeli na bazie mapy */
-    generateTable(myMap);
+        /* wywołanie funkcji removeTable() */
+            removeTable();
+        /* Wygenerowanie dynamicznej tabeli na bazie mapy */
+            generateTable(myMap);
+        }
+        else {
+        /* wywołanie funkcji calc */
+            let myMap = calc(creditDuration, creditValue, percentage);
+
+        /* Podsumowanie - raty malejące */
+            // "Odsetki do spłaty" - całkowita suma rat
+            document.getElementById('interest-monthly-summmary-result').innerHTML = parseFloat(sumInterestMonthly).toFixed(2);
+            // "Całkowity koszt kredytu" - odsetki do spłaty + prowizja
+            document.getElementById('total-cost-loan-result').innerHTML = parseFloat(sumInterestMonthly + ((creditValue * commission) / 100)).toFixed(2);
+            // "Razem" - całkowity koszt kredytu + kwota kredytu
+            document.getElementById('overall-result').innerHTML = parseFloat(parseFloat(creditValue) + sumInterestMonthly + ((creditValue * commission) / 100)).toFixed(2);
+
+        /* wywołanie funkcji removeTable() */
+            removeTable();
+        /* Wygenerowanie dynamicznej tabeli na bazie mapy */
+            generateTable(myMap);
+        };
 };
-}
 
 /* Funkcja obliczająca dla raty malejącej */
-function calc (period, creditValue, percentage) {
+function calc(period, creditValue, percentage) {
     // rata kapitałowa miesięczna
     let capitalMonthly = creditValue/period;
     let currentCreditValue = creditValue;
@@ -128,9 +128,8 @@ function sumInterest(period, creditValue, percentage) {
 return sumInterestMonthly;
 };
 
-
 /* Funkcja obliczająca dla raty stałej */
-function calcConstant (period, creditValue, percentage) {
+function calcConstant(period, creditValue, percentage) {
     // Wysokość raty R=A*(q^n)*(q-1)/[(q^n)-1]
     let monthlyInstallment = (creditValue * Math.pow((1 + (percentage/(100*12))),period) * ((1 + (percentage/(100*12)))-1)) / ((Math.pow((1 + (percentage/(100*12))),period))-1);
     let currentCreditValue = creditValue;
@@ -240,5 +239,3 @@ let element = document.getElementById("result-table-summary");
         element.removeChild(element.firstChild);
     }
 };
-
-

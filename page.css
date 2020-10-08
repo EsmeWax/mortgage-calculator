@@ -35,7 +35,7 @@ body {
 form {
     /* Center the form on the page */
     margin: 0 auto;
-    width: 50%;
+    width: 60%;
     /* Form outline */
     padding: 1em;
     border: 1px solid #CCC;
@@ -50,7 +50,7 @@ form {
 
 .subtitle {
     color: black;
-    margin-top: 0;
+    margin-top: 10px;
     padding-bottom: 1px;
     text-align: left;
     font-size: 1.5rem;
@@ -142,11 +142,19 @@ instead of horiz on screens that are less than 800px wide */
     background: lightyellow;
 }
 
+h4 {
+    color: black;
+    margin-top: 0;
+    /* padding-bottom: 1px; */
+    font-size: 1.2rem;
+}
+
+
 .form-part-summary {
     background-color: grey;
     padding: 20px 20px;
     border-radius: 1em;
-    width: 50%;
+    width: 60%;
     margin-left: auto;
     margin-right: auto;
 

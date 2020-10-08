@@ -9,7 +9,9 @@ function myCalculate() {
     let percentage = parseFloat(bankMargin) + parseFloat(wiborStart);
 /* Dane dodatkowe */
 
-
+    // miesiąc pierwszej raty
+    let myDate = new Date(document.getElementById("first-rate-day").value);
+    
 /* Podsumowanie */
     // Credit value - "kwota kredytu"
     document.getElementById('credit-value-result').innerHTML = creditValue;
@@ -25,8 +27,10 @@ function myCalculate() {
     let sel = document.getElementById("rate-type");
         if(sel.value == 'constant') {
         /* wywołanie funkcji calcConstant */
-            let myMap = calcConstant(creditDuration, creditValue, percentage);
+            let myMap = calcConstant(creditDuration, creditValue, percentage, myDate);
 
+            document.getElementById('current-rate-type').innerHTML = "Raty: stałe";
+        
         /* Podsumowanie - raty stałe */
             // "Odsetki do spłaty" - suma całkowita rat
             document.getElementById('interest-monthly-summmary-result').innerHTML = parseFloat(sumInterestMonthlyConst).toFixed(2);
@@ -42,7 +46,9 @@ function myCalculate() {
         }
         else {
         /* wywołanie funkcji calc */
-            let myMap = calc(creditDuration, creditValue, percentage);
+            let myMap = calc(creditDuration, creditValue, percentage, myDate);
+
+            document.getElementById('current-rate-type').innerHTML = "Raty: malejące";
 
         /* Podsumowanie - raty malejące */
             // "Odsetki do spłaty" - całkowita suma rat
@@ -60,7 +66,7 @@ function myCalculate() {
 };
 
 /* Funkcja obliczająca dla raty malejącej */
-function calc(period, creditValue, percentage) {
+function calc(period, creditValue, percentage, myDate) {
     // rata kapitałowa miesięczna
     let capitalMonthly = creditValue/period;
     let currentCreditValue = creditValue;
@@ -75,6 +81,7 @@ function calc(period, creditValue, percentage) {
     //console.log("1" + " : " + parseFloat(capitalMonthly).toFixed(2) + " : " + parseFloat(firstMonthInterest).toFixed(2) + " : " + parseFloat(firstMonthlyInstallment).toFixed(2) + " : " + parseFloat(creditValue).toFixed(2) + " : " + parseFloat(sumInterestMonthly).toFixed(2)); 
     // Obiekt z pierwszym wierszem tabeli
     let myFirstTableObject = {
+        Date: myDate.getFullYear() + "-" + (myDate.getMonth()+1),
         capitalMonthly: parseFloat(capitalMonthly).toFixed(2),
         interestMonthly: parseFloat(firstMonthInterest).toFixed(2),
         monthlyInstallment: parseFloat(firstMonthlyInstallment).toFixed(2)
@@ -97,8 +104,10 @@ function calc(period, creditValue, percentage) {
         //tu inicjalizuje obiekt installmentAmount zamiast console.log
         //console.log(i+1 + " : " + parseFloat(capitalMonthly).toFixed(2) + " : " + parseFloat(interestMonthly).toFixed(2) + " : " + parseFloat(monthlyInstallment).toFixed(2) + " : " + parseFloat(currentCreditValue).toFixed(2) + " : " + parseFloat(sumInterestMonthly).toFixed(2));  
 
+        let myNewDate = new Date(myDate.setMonth(myDate.getMonth()+1));
         // wypełnianie obiektu 
         let myTableObject = {
+            Date: myNewDate.getFullYear() + "-" + (myNewDate.getMonth()+1),
             capitalMonthly: parseFloat(capitalMonthly).toFixed(2),
             interestMonthly: parseFloat(interestMonthly).toFixed(2),
             monthlyInstallment: parseFloat(monthlyInstallment).toFixed(2)
@@ -129,7 +138,7 @@ return sumInterestMonthly;
 };
 
 /* Funkcja obliczająca dla raty stałej */
-function calcConstant(period, creditValue, percentage) {
+function calcConstant(period, creditValue, percentage, myDate) {
     // Wysokość raty R=A*(q^n)*(q-1)/[(q^n)-1]
     let monthlyInstallment = (creditValue * Math.pow((1 + (percentage/(100*12))),period) * ((1 + (percentage/(100*12)))-1)) / ((Math.pow((1 + (percentage/(100*12))),period))-1);
     let currentCreditValue = creditValue;
@@ -142,6 +151,7 @@ function calcConstant(period, creditValue, percentage) {
     //console.log("1" + " : " + parseFloat(capitalMonthly).toFixed(2) + " : " + parseFloat(firstMonthInterest).toFixed(2) + " : " + parseFloat(monthlyInstallment).toFixed(2) + " : " + parseFloat(creditValue).toFixed(2) + " : " + parseFloat(sumInterestMonthly).toFixed(2)); 
     // Obiekt z pierwszym wierszem tabeli
     let myFirstTableObject = {
+        Date: myDate.getFullYear() + "-" + (myDate.getMonth()+1),
         capitalMonthly: parseFloat(capitalMonthly).toFixed(2),
         interestMonthly: parseFloat(firstMonthInterest).toFixed(2),
         monthlyInstallment: parseFloat(monthlyInstallment).toFixed(2)
@@ -162,8 +172,10 @@ function calcConstant(period, creditValue, percentage) {
         sumInterestMonthly = interestMonthly + sumInterestMonthly;
         //tu inicjalizuje obiekt installmentAmount zamiast console.log
         //console.log(i+1 + " : " + parseFloat(capitalMonthly).toFixed(2) + " : " + parseFloat(interestMonthly).toFixed(2) + " : " + parseFloat(monthlyInstallment).toFixed(2) + " : " + parseFloat(currentCreditValue).toFixed(2) + " : " + parseFloat(sumInterestMonthly).toFixed(2));  
+        let myNewDate = new Date(myDate.setMonth(myDate.getMonth()+1));
         // wypełnianie obiektu 
         let myTableObject = {
+            Date: myNewDate.getFullYear() + "-" + (myNewDate.getMonth()+1),
             capitalMonthly: parseFloat(capitalMonthly).toFixed(2),
             interestMonthly: parseFloat(interestMonthly).toFixed(2),
             monthlyInstallment: parseFloat(monthlyInstallment).toFixed(2)
@@ -204,24 +216,33 @@ let table = document.querySelector(".table-summary table");
     data.forEach(function(value, key) {
         let row = table.insertRow();
         let cell0 = row.insertCell();
-        let cell = row.insertCell();
+
+        let cell4 = row.insertCell(); //dodane
+
         let cell1 = row.insertCell();
         let cell2 = row.insertCell();
+        let cell3 = row.insertCell();
         let text0 = document.createTextNode(key);
-        let text = document.createTextNode(value.capitalMonthly);
-        let text1 = document.createTextNode(value.interestMonthly);
-        let text2 = document.createTextNode(value.monthlyInstallment);
+
+        let text4 = document.createTextNode(value.Date); //dodane
+
+        let text1 = document.createTextNode(value.capitalMonthly);
+        let text2 = document.createTextNode(value.interestMonthly);
+        let text3 = document.createTextNode(value.monthlyInstallment);
         cell0.appendChild(text0);
-        cell.appendChild(text);
+
+        cell4.appendChild(text4); // dodane
+
         cell1.appendChild(text1);
         cell2.appendChild(text2);
+        cell3.appendChild(text3);
     });
     generateTableHead();
 };
 /* Generowanie nagłówków tablicy dynamicznej */
 function generateTableHead() {
 let table = document.querySelector(".table-summary table");
-let dataHeader = ["L.p", "Rata kapitałowa", "Odsetki", "Rata miesięczna"];
+let dataHeader = ["L.p", "Data", "Rata kapitałowa", "Odsetki", "Rata miesięczna"];
 // Nagłówki tabeli
     let thead = table.createTHead();
     let row = thead.insertRow();

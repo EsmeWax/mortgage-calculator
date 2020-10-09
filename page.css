@@ -149,6 +149,10 @@ h4 {
     font-size: 1.2rem;
 }
 
+.graphic-results {
+    padding: 0px 100px;
+}
+
 
 .form-part-summary {
     background-color: grey;

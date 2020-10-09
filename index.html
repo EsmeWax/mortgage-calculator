@@ -86,7 +86,7 @@
                                 <div class="form-row">
                                     <label for="first-rate-day" class="label-left-column">Miesiąc pierwszej raty:</label>
                                     <div class="label-right-column">
-                                        <input name="first-rate-day" id="first-rate-day" type="date">
+                                        <input name="first-rate-day" id="first-rate-day" type="date" value="2020-10-09">
                                     </div>
                                 </div>
                                 <div class="form-row">
@@ -114,8 +114,8 @@
                                 <h2 class="subtitle">Twoje wyniki</h2>
                                 <h4 id="current-rate-type">Raty: </h4>
                             </header>
-                            <div class="results">
-
+                            <div id="chart-div">
+                                <canvas id="myChart" style="position:relative; height: 400px"></canvas>
                             </div>
                         </div>
                         <div style="padding: 20px;"></div>
@@ -172,7 +172,7 @@
             <a href="mailto:EsmeWax@gmail.com">EsmeWax@gmail.com</a></p>
         </footer>
     </div>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
     <script src="page.js"></script>
 </body>
 </html>

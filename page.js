@@ -43,6 +43,7 @@ function myCalculate() {
             removeTable();
         /* Wygenerowanie dynamicznej tabeli na bazie mapy */
             generateTable(myMap);
+            makeMyChart(myMap);  
         }
         else {
         /* wywołanie funkcji calc */
@@ -62,7 +63,8 @@ function myCalculate() {
             removeTable();
         /* Wygenerowanie dynamicznej tabeli na bazie mapy */
             generateTable(myMap);
-        };
+            makeMyChart(myMap);  
+        }; 
 };
 
 /* Funkcja obliczająca dla raty malejącej */
@@ -260,3 +262,93 @@ let element = document.getElementById("result-table-summary");
         element.removeChild(element.firstChild);
     }
 };
+
+/* Example Chart with chart.js */
+function makeMyChart(Map) {
+    let ctx = document.getElementById('myChart');
+    let mapkeysArray = [...Map.keys()];
+    let mapValuesArray = [...Map.values()];
+    let newCapitalMonthlyArray = mapValuesArray.map(element => element.capitalMonthly);
+    let newInterestMonthlyArray = mapValuesArray.map(element => element.interestMonthly);
+    
+    let myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: mapkeysArray,
+            datasets: [{
+                label: 'Rata kapitałowa',
+                data: newCapitalMonthlyArray,
+                backgroundColor: ['rgba(255, 99, 132, 0.5)'],
+                borderColor: ['rgba(255, 99, 132, 1)'],
+                borderWidth: 2
+            },
+            {
+                label: 'Odsetki',
+                data: newInterestMonthlyArray,
+                backgroundColor: ['rgba(54, 162, 235, 0.5)'],
+                borderColor: ['rgba(54, 162, 235, 1)'],
+                borderWidth: 2
+            }]
+        },
+        options: {
+            legend: {
+                labels: {
+                    fontColor: '#fff',
+                }
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        fontColor: '#fff',
+                        //stepSize: 700
+                    },
+                    stacked: true,
+                    gridLines: {
+                        color: '#fff',
+                        zeroLineColor: '#fff',
+                        borderDash: [8, 4]
+                    }
+                }],
+                xAxes: [{
+                    ticks: {
+                        //stepSize: 5,
+                        fontColor: '#fff',
+                        //autoSkip: true,
+                        maxRotation: 0,
+                        minRotation: 0,
+                    },
+                    gridLines: {
+                        color: '#fff',
+                        zeroLineColor: '#fff',
+                        borderDash: [8, 4]
+                    }
+                }],
+            },
+            elements: {
+                point: {
+                    radius: 0
+                }
+            },
+            tooltips: {
+                mode: 'index',
+                intersect: false
+            },
+            hover: {
+                mode: 'index',
+                intersect: false
+            }
+        }
+    });
+
+// if (myChart) myChart.destroy();
+// myChart = new Chart(ctx,);
+// myChart.update();
+};
+
+// function removeChart() {
+//     let element = document.getElementById("myChart");
+//         while(element.firstChild) {
+//             element.removeChild(element.firstChild);
+//         }
+// };

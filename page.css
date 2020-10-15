@@ -93,10 +93,18 @@ form {
     border: 1px solid #ddd;
     border-radius: 5px;
 }
+/* div #fixedFees .label-left-column {
+    padding: 0px 0px 75px 0px;
+    margin: 5px 10px 5px 0;
+} */
+
+#row-labels {
+    margin: 5px 140px 5px 5px;
+    color: ivory; 
+}
 
 /* style the "dodaj" buttons */
 .button-adding {
-    text-align: center;
     margin: 5px 10px 5px 0;
     background-color: #fff;
     border: 1px solid #ddd;
@@ -106,6 +114,30 @@ form {
     background: lightsteelblue;
 }
 
+.row {
+    display: flex;
+    flex-flow: row wrap;
+    margin: 5px 0px 5px 0;
+}
+
+.date-picker label { 
+    margin: 5px 140px 5px 5px;
+    color: ivory;
+} 
+.date-picker input { 
+    width: 140px;
+    margin: 1px 20px 5px 5px;
+} 
+.additional-input-row {
+    display: flex;
+    flex-flow: row wrap;
+    /* margin: 5px 0px 5px 0; */
+    margin: auto;
+    vertical-align: center;
+}
+.fixed-fees-amount-value {
+    width: 70px;
+}
 /* Add responsiveness - display the form contrlos vertically 
 instead of horiz on screens that are less than 800px wide */
 @media (max-width: 800px) {

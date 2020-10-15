@@ -71,10 +71,42 @@
                             <div style="padding: 10px;"></div>
                             <div class="form-part">
                                 <h2 class="subtitle">Dane dodatkowe</h2>
-                                <div class="form-row">
+                                <div id="fixedFees" class="form-row">
                                     <label for="fixed-fees" class="label-left-column">Opłaty stałe:</label>
                                     <div class="right-column-button">
-                                        <button type="button" class="button-adding">Dodaj</button>
+                                        <button type="button" class="button-adding" onclick="addInputRow();">Dodaj</button>
+                                        <div id='row-labels'>
+                                            <label for="fixed-fees-date-from">Od</label>
+                                            <label for="fixed-fees-date-to">Do</label>
+                                            <label for="fixed-fees-value">Kwota</label>
+                                        </div>
+                                        <div id="reqs" class="row">
+                                        </div>
+                                        <!-- <div class="row">
+                                            <div class="date-picker">
+                                                <label for="fixed-fees-date-from">Od</label>
+                                            </div>
+                                            <div class="date-picker">
+                                                <label for="fixed-fees-date-to">Do</label>
+                                            </div>
+                                            <div class="date-picker">
+                                                <label for="fixed-fees-value">Kwota</label>
+                                            </div>
+                                        </div>
+                                        <div class="additional-input-row">
+                                            <div class="date-picker">
+                                                <input name="fixed-fee-date-from" id="fixed-fee-date-from" type="date" value="2020-10-09">
+                                            </div>
+                                            <div class="date-picker">
+                                                <input name="fixed-fee-date-to" id="fixed-fee-date-to" type="date" value="2040-10-09">
+                                            </div>
+                                            <div class="fixed-fees-amount">
+                                                <input name="fixedfee" placeholder="[PLN]" required pattern="/^[+]?(?!0\d)[0-9]*\.?[0-9]+$/" id="fixedfee" type="number" class="fixed-fees-amount-value" value="">
+                                            </div>
+                                            <div class="remove-button">
+                                                <button type="button" class="btn-remove-secondary"></button>
+                                            </div>
+                                        </div> -->
                                     </div>
                                 </div>
                                 <div class="form-row">
@@ -137,6 +169,14 @@
                                         <tr>
                                             <th class="summary-header">Prowizja:</th>
                                             <td><span id="commission-result"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <th class="summary-header">Suma opłat stałych:</th>
+                                            <td><span id="fixed-fees-summary-result"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <th class="summary-header">Suma opłat zmiennych:</th>
+                                            <td><span id="changing-fees-summary-result"></span></td>
                                         </tr>
                                         <tr style="background-color: rgb(60, 70, 90);">
                                             <th class="summary-header">Całkowity koszt kredytu:</th>

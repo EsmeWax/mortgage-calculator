@@ -218,26 +218,23 @@ let table = document.querySelector(".table-summary table");
     data.forEach(function(value, key) {
         let row = table.insertRow();
         let cell0 = row.insertCell();
-
-        let cell4 = row.insertCell(); //dodane
-
+        let cell4 = row.insertCell();
         let cell1 = row.insertCell();
         let cell2 = row.insertCell();
         let cell3 = row.insertCell();
+        //let cell5 = row.insertCell(); //dodane
         let text0 = document.createTextNode(key);
-
-        let text4 = document.createTextNode(value.Date); //dodane
-
+        let text4 = document.createTextNode(value.Date);
         let text1 = document.createTextNode(value.capitalMonthly);
         let text2 = document.createTextNode(value.interestMonthly);
         let text3 = document.createTextNode(value.monthlyInstallment);
+        //let text5 = document.createTextNode(value.fixedFees); //dodane
         cell0.appendChild(text0);
-
-        cell4.appendChild(text4); // dodane
-
+        cell4.appendChild(text4);
         cell1.appendChild(text1);
         cell2.appendChild(text2);
         cell3.appendChild(text3);
+        //cell5.appendChild(text5);
     });
     generateTableHead();
 };
@@ -263,6 +260,7 @@ let element = document.getElementById("result-table-summary");
     }
 };
 
+let myChart;
 /* Example Chart with chart.js */
 function makeMyChart(Map) {
     let ctx = document.getElementById('myChart');
@@ -271,7 +269,10 @@ function makeMyChart(Map) {
     let newCapitalMonthlyArray = mapValuesArray.map(element => element.capitalMonthly);
     let newInterestMonthlyArray = mapValuesArray.map(element => element.interestMonthly);
     
-    let myChart = new Chart(ctx, {
+    if (myChart) {
+        myChart.destroy();
+    }
+    myChart = new Chart(ctx, {
         type: 'line',
         data: {
             labels: mapkeysArray,
@@ -301,7 +302,6 @@ function makeMyChart(Map) {
                     ticks: {
                         beginAtZero: true,
                         fontColor: '#fff',
-                        //stepSize: 700
                     },
                     stacked: true,
                     gridLines: {
@@ -312,9 +312,7 @@ function makeMyChart(Map) {
                 }],
                 xAxes: [{
                     ticks: {
-                        //stepSize: 5,
                         fontColor: '#fff',
-                        //autoSkip: true,
                         maxRotation: 0,
                         minRotation: 0,
                     },
@@ -340,15 +338,105 @@ function makeMyChart(Map) {
             }
         }
     });
-
-// if (myChart) myChart.destroy();
-// myChart = new Chart(ctx,);
-// myChart.update();
+myChart.update();
 };
 
-// function removeChart() {
-//     let element = document.getElementById("myChart");
-//         while(element.firstChild) {
-//             element.removeChild(element.firstChild);
-//         }
-// };
+
+// dodawanie nowych pól dla danych dodatkowych
+// let reqs_id = 0;
+// function removeElement(ev) {
+//     let button = ev.target;
+//     let field = button.previousSibling;
+//     let div = button.parentElement;
+//     div.removeChild(button);
+//     div.removeChild(field);
+// }
+
+// function addInputRow() {
+    // increment reqs_id to get a unique ID for the new element
+    // reqs_id++; 
+
+    //create textbox
+    // let input = document.createElement('input');
+    // input.type = "number";
+    // input.setAttribute("class", "date-picker");
+    // input.setAttribute('id', 'reqs' + reqs_id);
+    // let rows = document.getElementById("reqs");
+
+    //create remove button
+    // let removeRowButton = document.createElement('button');
+    // removeRowButton.setAttribute('id', 'remove-row' + reqs_id);
+    // removeRowButton.onclick = function(e) {
+    //   removeElement(e)
+    // };
+    // removeRowButton.setAttribute("type", "button");
+    // remove.innerHTML = "-" + reqs_id;
+    //remove.innerHTML = "-";
+    //append elements
+//     rows.appendChild(input);
+//     rows.appendChild(removeRowButton);
+// }
+
+
+// dodawanie nowych pól dla danych dodatkowych
+let reqs_id = 0;
+function removeElement(ev) {
+    let button = ev.target;
+    let div = button.parentElement;
+    div.remove();
+    // while (div.lastChild) {
+    //     div.removeChild(div.lastChild);
+    // }
+}
+
+function addInputRow() {
+    //myLabel();
+    // increment reqs_id to get a unique ID for the new element
+    reqs_id++; 
+
+    let containerinputFields = document.createElement('div');
+    containerinputFields.setAttribute('id', 'wrapper-input-fields-row' + reqs_id);
+    
+    //create textbox
+    let input = document.createElement('input');
+    input.type = "date";
+    input.setAttribute('id', 'fixed-fee-date-from' + reqs_id);
+    input.setAttribute('name', 'fixed-fee-date-from');
+    
+    let inputTo = document.createElement('input');
+    inputTo.type = "date";
+    inputTo.setAttribute('id', 'fixed-fee-date-To' + reqs_id);
+    inputTo.setAttribute('name', 'fixed-fee-date-To');
+    
+    let inputAmount = document.createElement('input');
+    inputAmount.type = "number";
+    inputAmount.setAttribute('id', 'fixed-fee-amount' + reqs_id);
+    inputAmount.setAttribute('name', 'fixed-fee-amount');
+
+    let rows = document.getElementById("reqs");
+    rows.appendChild(containerinputFields);
+
+    //create remove button
+    let removeRowButton = document.createElement('button');
+    removeRowButton.setAttribute('id', 'remove-row' + reqs_id);
+    removeRowButton.onclick = function(e) {
+      removeElement(e)
+    };
+    removeRowButton.setAttribute("type", "button");
+
+    //append elements
+    containerinputFields.appendChild(input);
+    containerinputFields.appendChild(inputTo);
+    containerinputFields.appendChild(inputAmount);
+    containerinputFields.appendChild(removeRowButton);
+}
+
+// function myLabel() {
+// let labeldisplay = document.getElementById('row-labels');
+//     if(labeldisplay.style.display === 'none') {
+//         labeldisplay.style.display = "block";
+//     }
+//     else {
+//         labeldisplay.style.display = "none";
+//     }
+// }

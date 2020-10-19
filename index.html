@@ -72,65 +72,59 @@
                             <div class="form-part">
                                 <h2 class="subtitle">Dane dodatkowe</h2>
                                 <div id="fixedFees" class="form-row">
-                                    <label for="fixed-fees" class="label-left-column">Opłaty stałe:</label>
+                                    <div class="labels">
+                                        <label for="fixed-fees" class="label-left-column">Opłaty stałe:</label>
+                                    </div>
                                     <div class="right-column-button">
-                                        <button type="button" class="button-adding" onclick="addInputRow();">Dodaj</button>
-                                        <div id='row-labels'>
+                                        <!-- <button type="button" class="button-adding" onclick="addInputRow();">Dodaj</button> -->
+                                        <div class="add-button-container">
+                                            <button type="button" class="button-adding" onclick="addInputRow();">Dodaj</button>
+                                        </div>
+                                        <!-- <div id='row-labels'>
                                             <label for="fixed-fees-date-from">Od</label>
                                             <label for="fixed-fees-date-to">Do</label>
                                             <label for="fixed-fees-value">Kwota</label>
-                                        </div>
-                                        <div id="reqs" class="row">
-                                        </div>
-                                        <!-- <div class="row">
-                                            <div class="date-picker">
-                                                <label for="fixed-fees-date-from">Od</label>
-                                            </div>
-                                            <div class="date-picker">
-                                                <label for="fixed-fees-date-to">Do</label>
-                                            </div>
-                                            <div class="date-picker">
-                                                <label for="fixed-fees-value">Kwota</label>
-                                            </div>
-                                        </div>
-                                        <div class="additional-input-row">
-                                            <div class="date-picker">
-                                                <input name="fixed-fee-date-from" id="fixed-fee-date-from" type="date" value="2020-10-09">
-                                            </div>
-                                            <div class="date-picker">
-                                                <input name="fixed-fee-date-to" id="fixed-fee-date-to" type="date" value="2040-10-09">
-                                            </div>
-                                            <div class="fixed-fees-amount">
-                                                <input name="fixedfee" placeholder="[PLN]" required pattern="/^[+]?(?!0\d)[0-9]*\.?[0-9]+$/" id="fixedfee" type="number" class="fixed-fees-amount-value" value="">
-                                            </div>
-                                            <div class="remove-button">
-                                                <button type="button" class="btn-remove-secondary"></button>
-                                            </div>
                                         </div> -->
+                                        <div id="additional-data" class="row">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <label for="variable-fees" class="label-left-column">Opłaty zmienne:</label>
+                                    <div class="labels">
+                                        <label for="variable-fees" class="label-left-column">Opłaty zmienne:</label>
+                                    </div>
                                     <div class="right-column-button">
-                                        <button type="button" class="button-adding">Dodaj</button>
+                                        <div class="add-button-container">
+                                            <button type="button" class="button-adding">Dodaj</button>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <label for="first-rate-day" class="label-left-column">Miesiąc pierwszej raty:</label>
+                                    <div class="labels">
+                                        <label for="first-rate-day" class="label-left-column">Miesiąc pierwszej raty:</label>
+                                    </div>
                                     <div class="label-right-column">
                                         <input name="first-rate-day" id="first-rate-day" type="date" value="2020-10-09">
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <label for="wibor-change" class="label-left-column">Zmiana Wiboru:</label>
+                                    <div class="labels">
+                                        <label for="wibor-change" class="label-left-column">Zmiana Wiboru:</label>
+                                    </div>
                                     <div class="right-column-button">
-                                        <button type="button" class="button-adding">Dodaj zmianę</button>
+                                        <div class="add-button-container">
+                                            <button type="button" class="button-adding">Dodaj zmianę</button>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <label for="surcharge" class="label-left-column">Nadpłata:</label>
+                                    <div class="labels">
+                                        <label for="surcharge" class="label-left-column">Nadpłata:</label>
+                                    </div>
                                     <div class="right-column-button">
-                                        <button type="button" class="button-adding">Dodaj</button>
+                                        <div class="add-button-container">
+                                            <button type="button" class="button-adding">Dodaj</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

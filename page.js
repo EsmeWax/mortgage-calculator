@@ -341,27 +341,43 @@ function makeMyChart(Map) {
 myChart.update();
 };
 
-
 // dodawanie nowych pól dla danych dodatkowych
 // let reqs_id = 0;
 // function removeElement(ev) {
 //     let button = ev.target;
-//     let field = button.previousSibling;
 //     let div = button.parentElement;
-//     div.removeChild(button);
-//     div.removeChild(field);
+//     div.remove();
+    // while (div.lastChild) {
+    //     div.removeChild(div.lastChild);
+    // }
 // }
 
 // function addInputRow() {
+    //myLabel();
     // increment reqs_id to get a unique ID for the new element
     // reqs_id++; 
 
+    // let containerinputFields = document.createElement('div');
+    // containerinputFields.setAttribute('id', 'wrapper-input-fields-row' + reqs_id);
+    
     //create textbox
     // let input = document.createElement('input');
-    // input.type = "number";
-    // input.setAttribute("class", "date-picker");
-    // input.setAttribute('id', 'reqs' + reqs_id);
+    // input.type = "date";
+    // input.setAttribute('id', 'fixed-fee-date-from' + reqs_id);
+    // input.setAttribute('name', 'fixed-fee-date-from');
+    
+    // let inputTo = document.createElement('input');
+    // inputTo.type = "date";
+    // inputTo.setAttribute('id', 'fixed-fee-date-To' + reqs_id);
+    // inputTo.setAttribute('name', 'fixed-fee-date-To');
+    
+    // let inputAmount = document.createElement('input');
+    // inputAmount.type = "number";
+    // inputAmount.setAttribute('id', 'fixed-fee-amount' + reqs_id);
+    // inputAmount.setAttribute('name', 'fixed-fee-amount');
+
     // let rows = document.getElementById("reqs");
+    // rows.appendChild(containerinputFields);
 
     //create remove button
     // let removeRowButton = document.createElement('button');
@@ -370,66 +386,13 @@ myChart.update();
     //   removeElement(e)
     // };
     // removeRowButton.setAttribute("type", "button");
-    // remove.innerHTML = "-" + reqs_id;
-    //remove.innerHTML = "-";
+
     //append elements
-//     rows.appendChild(input);
-//     rows.appendChild(removeRowButton);
+//     containerinputFields.appendChild(input);
+//     containerinputFields.appendChild(inputTo);
+//     containerinputFields.appendChild(inputAmount);
+//     containerinputFields.appendChild(removeRowButton);
 // }
-
-
-// dodawanie nowych pól dla danych dodatkowych
-let reqs_id = 0;
-function removeElement(ev) {
-    let button = ev.target;
-    let div = button.parentElement;
-    div.remove();
-    // while (div.lastChild) {
-    //     div.removeChild(div.lastChild);
-    // }
-}
-
-function addInputRow() {
-    //myLabel();
-    // increment reqs_id to get a unique ID for the new element
-    reqs_id++; 
-
-    let containerinputFields = document.createElement('div');
-    containerinputFields.setAttribute('id', 'wrapper-input-fields-row' + reqs_id);
-    
-    //create textbox
-    let input = document.createElement('input');
-    input.type = "date";
-    input.setAttribute('id', 'fixed-fee-date-from' + reqs_id);
-    input.setAttribute('name', 'fixed-fee-date-from');
-    
-    let inputTo = document.createElement('input');
-    inputTo.type = "date";
-    inputTo.setAttribute('id', 'fixed-fee-date-To' + reqs_id);
-    inputTo.setAttribute('name', 'fixed-fee-date-To');
-    
-    let inputAmount = document.createElement('input');
-    inputAmount.type = "number";
-    inputAmount.setAttribute('id', 'fixed-fee-amount' + reqs_id);
-    inputAmount.setAttribute('name', 'fixed-fee-amount');
-
-    let rows = document.getElementById("reqs");
-    rows.appendChild(containerinputFields);
-
-    //create remove button
-    let removeRowButton = document.createElement('button');
-    removeRowButton.setAttribute('id', 'remove-row' + reqs_id);
-    removeRowButton.onclick = function(e) {
-      removeElement(e)
-    };
-    removeRowButton.setAttribute("type", "button");
-
-    //append elements
-    containerinputFields.appendChild(input);
-    containerinputFields.appendChild(inputTo);
-    containerinputFields.appendChild(inputAmount);
-    containerinputFields.appendChild(removeRowButton);
-}
 
 // function myLabel() {
 // let labeldisplay = document.getElementById('row-labels');
@@ -440,3 +403,136 @@ function addInputRow() {
 //         labeldisplay.style.display = "none";
 //     }
 // }
+
+
+// dodawanie nowych pól dla danych dodatkowych
+// let additional_data_id = 0;
+// function removeElement(ev) {
+//     let button = ev.target;
+//     let div = button.parentElement;
+//     div.remove();
+// }
+// function addInputRow() {
+    // increment reqs_id to get a unique ID for the new element
+    // additional_data_id++; 
+
+    // let containerinputFields = document.createElement('div');
+    // containerinputFields.setAttribute('id', 'wrapper-input-fields-row' + additional_data_id);
+    // containerinputFields.setAttribute('class', 'wrapper-input-fields');
+    
+    //create textbox
+    // let input = document.createElement('input');
+    // input.type = "date";
+    // input.setAttribute('id', 'fixed-fee-date-from' + additional_data_id);
+    // input.setAttribute('name', 'fixed-fee-date-from');
+    
+    // let inputTo = document.createElement('input');
+    // inputTo.type = "date";
+    // inputTo.setAttribute('id', 'fixed-fee-date-To' + additional_data_id);
+    // inputTo.setAttribute('name', 'fixed-fee-date-To');
+    
+    // let inputAmount = document.createElement('input');
+    // inputAmount.type = "number";
+    // inputAmount.setAttribute('id', 'fixed-fee-amount' + additional_data_id);
+    // inputAmount.setAttribute('name', 'fixed-fee-amount');
+
+    // let rows = document.getElementById("additional-data");
+    // rows.appendChild(containerinputFields);
+
+    //create remove button
+    // let removeRowButton = document.createElement('button');
+    // removeRowButton.setAttribute('id', 'remove-row' + additional_data_id);
+    // removeRowButton.onclick = function(e) {
+    //   removeElement(e)
+    // };
+    // removeRowButton.setAttribute("type", "button");
+
+    //append elements
+//     containerinputFields.appendChild(input);
+//     containerinputFields.appendChild(inputTo);
+//     containerinputFields.appendChild(inputAmount);
+//     containerinputFields.appendChild(removeRowButton);
+// }
+
+
+
+
+
+
+// dodawanie nowych pól dla danych dodatkowych
+let additional_data_id = 0;
+function removeElement(ev) {
+    let button = ev.target;
+    let div = button.parentNode.parentNode;
+    div.remove();
+}
+function addInputRow() {
+    // increment reqs_id to get a unique ID for the new element
+    additional_data_id++; 
+
+/* Wrapper Div wrapping 1 whole row of input data and remove button*/
+    let containerinputFields = document.createElement('div');
+        containerinputFields.setAttribute('id', 'wrapper-input-fields-row' + additional_data_id);
+        containerinputFields.setAttribute('class', 'wrapper-input-fields');
+
+/* Creating separete Div for each field */
+    // Div for wrapping an input for date
+    let datePickerContainer = document.createElement('div');
+        datePickerContainer.setAttribute('id', 'date-picker-container' + additional_data_id);
+        datePickerContainer.setAttribute('class', 'date-picker-container');
+    // Div for wrapping an input for date
+    let datePickerContainerTo = document.createElement('div');
+        datePickerContainerTo.setAttribute('id', 'date-picker-container-To' + additional_data_id);
+        datePickerContainerTo.setAttribute('class', 'date-picker-container');
+    // Div for wrapping an input for amount
+    let amountContainer = document.createElement('div');
+        amountContainer.setAttribute('id', 'amount-container' + additional_data_id);
+        amountContainer.setAttribute('class', 'amount-container');
+    // Div for wrapping an remove btn
+    let removeBtnContainer = document.createElement('div');
+        removeBtnContainer.setAttribute('id', 'remove-row-btn-container' + additional_data_id);
+        removeBtnContainer.setAttribute('class', 'remove-row-btn-container');
+
+    //create textbox "date from"
+    let input = document.createElement('input');
+        input.type = "date";
+        input.setAttribute('id', 'fixed-fee-date-from' + additional_data_id);
+        input.setAttribute('name', 'fixed-fee-date-from');
+        input.setAttribute('value', "2020-10-09");
+    //create textbox "date To"
+    let inputTo = document.createElement('input');
+        inputTo.type = "date";
+        inputTo.setAttribute('id', 'fixed-fee-date-To' + additional_data_id);
+        inputTo.setAttribute('name', 'fixed-fee-date-To');
+        inputTo.setAttribute('value', "2040-10-09");
+    //create textbox "amount input"
+    let inputAmount = document.createElement('input');
+        inputAmount.type = "number";
+        inputAmount.setAttribute('id', 'fixed-fee-amount' + additional_data_id);
+        inputAmount.setAttribute('name', 'fixed-fee-amount');
+        inputAmount.setAttribute('placeholder', "[PLN]");
+
+    let rows = document.getElementById("additional-data");
+        rows.appendChild(containerinputFields);
+
+    // Append new divs to main Div
+    containerinputFields.appendChild(datePickerContainer);
+    containerinputFields.appendChild(datePickerContainerTo);
+    containerinputFields.appendChild(amountContainer);
+    containerinputFields.appendChild(removeBtnContainer);
+
+    //create remove button
+    let removeRowButton = document.createElement('button');
+        removeRowButton.setAttribute('id', 'remove-row' + additional_data_id);
+        removeRowButton.setAttribute('class', 'close');
+        removeRowButton.onclick = function(e) {
+            removeElement(e)
+        };
+        removeRowButton.setAttribute("type", "button");
+
+    //append elements
+    datePickerContainer.appendChild(input);
+    datePickerContainerTo.appendChild(inputTo);
+    amountContainer.appendChild(inputAmount);
+    removeBtnContainer.appendChild(removeRowButton);
+}

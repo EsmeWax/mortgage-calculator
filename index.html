@@ -67,38 +67,6 @@
                                         <div class="valid-feedback">Pole wymagane</div>
                                     </div>
                                 </div>
-                            </div>
-                            <div style="padding: 10px;"></div>
-                            <div class="form-part">
-                                <h2 class="subtitle">Dane dodatkowe</h2>
-                                <div id="fixedFees" class="form-row">
-                                    <div class="labels">
-                                        <label for="fixed-fees" class="label-left-column">Opłaty stałe:</label>
-                                    </div>
-                                    <div class="right-column-button">
-                                        <!-- <button type="button" class="button-adding" onclick="addInputRow();">Dodaj</button> -->
-                                        <div class="add-button-container">
-                                            <button type="button" class="button-adding" onclick="addInputRow();">Dodaj</button>
-                                        </div>
-                                        <!-- <div id='row-labels'>
-                                            <label for="fixed-fees-date-from">Od</label>
-                                            <label for="fixed-fees-date-to">Do</label>
-                                            <label for="fixed-fees-value">Kwota</label>
-                                        </div> -->
-                                        <div id="additional-data" class="row">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="labels">
-                                        <label for="variable-fees" class="label-left-column">Opłaty zmienne:</label>
-                                    </div>
-                                    <div class="right-column-button">
-                                        <div class="add-button-container">
-                                            <button type="button" class="button-adding">Dodaj</button>
-                                        </div>
-                                    </div>
-                                </div>
                                 <div class="form-row">
                                     <div class="labels">
                                         <label for="first-rate-day" class="label-left-column">Miesiąc pierwszej raty:</label>
@@ -107,27 +75,8 @@
                                         <input name="first-rate-day" id="first-rate-day" type="date" value="2020-10-09">
                                     </div>
                                 </div>
-                                <div class="form-row">
-                                    <div class="labels">
-                                        <label for="wibor-change" class="label-left-column">Zmiana Wiboru:</label>
-                                    </div>
-                                    <div class="right-column-button">
-                                        <div class="add-button-container">
-                                            <button type="button" class="button-adding">Dodaj zmianę</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="labels">
-                                        <label for="surcharge" class="label-left-column">Nadpłata:</label>
-                                    </div>
-                                    <div class="right-column-button">
-                                        <div class="add-button-container">
-                                            <button type="button" class="button-adding">Dodaj</button>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
+                            <div style="padding: 10px;"></div>
                             <div class="primary-btn">
                                 <button type="button" id="count-btn" onclick="myCalculate();">Oblicz</button>
                             </div>
@@ -164,14 +113,6 @@
                                             <th class="summary-header">Prowizja:</th>
                                             <td><span id="commission-result"></span></td>
                                         </tr>
-                                        <tr>
-                                            <th class="summary-header">Suma opłat stałych:</th>
-                                            <td><span id="fixed-fees-summary-result"></span></td>
-                                        </tr>
-                                        <tr>
-                                            <th class="summary-header">Suma opłat zmiennych:</th>
-                                            <td><span id="changing-fees-summary-result"></span></td>
-                                        </tr>
                                         <tr style="background-color: rgb(60, 70, 90);">
                                             <th class="summary-header">Całkowity koszt kredytu:</th>
                                             <td><span id="total-cost-loan-result"></span></td>
@@ -195,11 +136,9 @@
                         </div>
                         <div style="padding: 10px;"></div>
                     </section>
-
                 </article>
             </div>
         </section>
-
 
         <footer class="footer">
             <p>Author: EsmeWax<br>

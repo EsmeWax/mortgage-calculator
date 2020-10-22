@@ -97,125 +97,6 @@ form {
     border: 1px solid #ddd;
     border-radius: 5px;
 }
-/* div #fixedFees .label-left-column {
-    position: relative;
-    padding: 0px 0px 75px 0px;
-    margin: 5px 10px 5px 0;
-} */
-
-div#fixedFees.form-row {
-    /* display: table;
-    width: 100%; */
-    position: relative;
-    /* background-color: green; */
-
-}
-
-.right-column-button {
-    width: 75%;
-    margin-right: 10px;
-    margin-top: 0px;
-    /* background-color:red; */
-    /* display: table-cell; */
-}
-
-.wrapper-input-fields {
-    display: flex;
-    flex-flow: row wrap;
-    position: relative;
-    margin: 5px 5px 5px 5px;
-    margin: auto;
-    vertical-align: center;
-}
-.amount-container {
-    margin-top: 3.5px;
-}
-
-.close {
-    position: relative;
-    margin-top: 10px;
-    border: 1px solid #ddd;
-    border-radius: 7px;
-    background: transparent;
-    vertical-align: middle;
-}
-.close:after{
-    display: inline-block;
-    content: "\00d7";
-    color: black;
-}
-.close:hover{
-    background: lightsteelblue;
-}
-
-/* new div for add button */
-.add-button-container {
-    /* background-color: yellow; */
-    /* display: table-cell; */
-    position: relative;
-    top: 0px;
-    width: 75%;
-}
-
-.labels {
-    width: 150px;
-    /* background-color: blue; */
-    position: relative;
-    top: 0px;
-    left: 0px;
-    color: ivory; 
-    margin-bottom: 5px;
-    margin-top: 5px;
-    font-weight: bold;
-    /* display: table-cell; */
-}
-/* Etykiety Od Do Kwota */
-#row-labels {
-    margin: 5px 140px 5px 5px;
-    color: ivory;
-}
-
-/* style the "dodaj" buttons */
-.button-adding {
-    /* position: relative;
-    margin-bottom: 5px; */
-    margin-right: 500px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    min-width: max-content;
-}
-.button-adding:hover {
-    background: lightsteelblue;
-}
-
-
-/*
-.date-picker label { 
-    margin: 5px 140px 5px 5px;
-    color: ivory;
-} 
-.date-picker input { 
-    width: 140px;
-    margin: 1px 20px 5px 5px;
-} */
-/* .additional-input-row { */
-    /* display: flex;
-    flex-flow: row wrap; */
-    /* margin: 5px 0px 5px 0; */
-    /* margin: auto;
-    vertical-align: center;
-}
-.fixed-fees-amount-value {
-    width: 70px;
-} */
-
-/* Styl pól Od Do kwota */
-/*.wrapper-input-fields {
-    display: block;
-    flex-flow: row wrap;
-    margin-bottom: 5px;
-}*/
 
 /* Add responsiveness - display the form contrlos vertically 
 instead of horiz on screens that are less than 800px wide */
@@ -229,12 +110,7 @@ instead of horiz on screens that are less than 800px wide */
         flex-direction: column;
         align-items: stretch;
     }
-
-    /* div#fixedFees.form-row, .add-button-container,.right-column-button,.labels {
-        display: inline-block;
-    } */
 }
-
 
 .valid-feedback {
     display: none;

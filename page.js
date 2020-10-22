@@ -7,8 +7,6 @@ function myCalculate() {
     let bankMargin = document.getElementById('bank-margin').value;
     let wiborStart = document.getElementById('wibor-start').value;
     let percentage = parseFloat(bankMargin) + parseFloat(wiborStart);
-/* Dane dodatkowe */
-
     // miesiąc pierwszej raty
     let myDate = new Date(document.getElementById("first-rate-day").value);
     
@@ -222,19 +220,16 @@ let table = document.querySelector(".table-summary table");
         let cell1 = row.insertCell();
         let cell2 = row.insertCell();
         let cell3 = row.insertCell();
-        //let cell5 = row.insertCell(); //dodane
         let text0 = document.createTextNode(key);
         let text4 = document.createTextNode(value.Date);
         let text1 = document.createTextNode(value.capitalMonthly);
         let text2 = document.createTextNode(value.interestMonthly);
         let text3 = document.createTextNode(value.monthlyInstallment);
-        //let text5 = document.createTextNode(value.fixedFees); //dodane
         cell0.appendChild(text0);
         cell4.appendChild(text4);
         cell1.appendChild(text1);
         cell2.appendChild(text2);
         cell3.appendChild(text3);
-        //cell5.appendChild(text5);
     });
     generateTableHead();
 };

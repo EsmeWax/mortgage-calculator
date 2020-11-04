@@ -10,6 +10,11 @@ function myCalculate() {
     // miesiąc pierwszej raty
     let myDate = new Date(document.getElementById("first-rate-day").value);
     
+    // Podsumowanie pokazuje się dopiero po kliknięciu "Oblicz"
+    // document.querySelectorAll(".form-part-summary").forEach(x => x.style.display = "block");
+    document.querySelectorAll(".form-part-summary").forEach(x => x.style.visibility = "visible");
+    document.querySelectorAll(".graphic-results header").forEach(x => x.style.visibility = "visible");
+
 /* Podsumowanie */
     // Credit value - "kwota kredytu"
     document.getElementById('credit-value-result').innerHTML = creditValue;
@@ -27,7 +32,7 @@ function myCalculate() {
         /* wywołanie funkcji calcConstant */
             let myMap = calcConstant(creditDuration, creditValue, percentage, myDate);
 
-            document.getElementById('current-rate-type').innerHTML = "Raty: stałe";
+            document.getElementById('current-rate-type').innerHTML = "Raty: Stałe";
         
         /* Podsumowanie - raty stałe */
             // "Odsetki do spłaty" - suma całkowita rat
@@ -47,7 +52,7 @@ function myCalculate() {
         /* wywołanie funkcji calc */
             let myMap = calc(creditDuration, creditValue, percentage, myDate);
 
-            document.getElementById('current-rate-type').innerHTML = "Raty: malejące";
+            document.getElementById('current-rate-type').innerHTML = "Raty: Malejące";
 
         /* Podsumowanie - raty malejące */
             // "Odsetki do spłaty" - całkowita suma rat
@@ -274,22 +279,24 @@ function makeMyChart(Map) {
             datasets: [{
                 label: 'Rata kapitałowa',
                 data: newCapitalMonthlyArray,
-                backgroundColor: ['rgba(255, 99, 132, 0.5)'],
-                borderColor: ['rgba(255, 99, 132, 1)'],
+                backgroundColor: 'rgba(255, 69, 0, 0.5)',
+                borderColor: ['rgba(255, 69, 0, 1)'],
                 borderWidth: 2
             },
             {
                 label: 'Odsetki',
                 data: newInterestMonthlyArray,
-                backgroundColor: ['rgba(54, 162, 235, 0.5)'],
-                borderColor: ['rgba(54, 162, 235, 1)'],
+                backgroundColor: 'rgba(75, 119, 190, 0.5)',
+                borderColor: ['rgba(75, 119, 190, 1)'],
                 borderWidth: 2
             }]
         },
         options: {
+            responsive: true,
             legend: {
                 labels: {
                     fontColor: '#fff',
+                    fontSize: 16
                 }
             },
             scales: {
@@ -297,6 +304,7 @@ function makeMyChart(Map) {
                     ticks: {
                         beginAtZero: true,
                         fontColor: '#fff',
+                        fontSize: 14
                     },
                     stacked: true,
                     gridLines: {
@@ -308,8 +316,9 @@ function makeMyChart(Map) {
                 xAxes: [{
                     ticks: {
                         fontColor: '#fff',
-                        maxRotation: 0,
+                        maxRotation: 60,
                         minRotation: 0,
+                        fontSize: 14
                     },
                     gridLines: {
                         color: '#fff',
@@ -325,7 +334,12 @@ function makeMyChart(Map) {
             },
             tooltips: {
                 mode: 'index',
-                intersect: false
+                intersect: false,
+                callbacks: {
+                    label: function(tooltipItem) {
+                           return ' '+tooltipItem.yLabel+' PLN';
+                        }
+                    }
             },
             hover: {
                 mode: 'index',

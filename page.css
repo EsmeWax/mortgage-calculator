@@ -1,61 +1,76 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: lightslategray;
+    /* background-color: lightslategray; */
+    background-image: linear-gradient(#4ca1af, #c4e0e5);
+    /* background-image: linear-gradient(#6dd5ed, #2193b0); */
 }
 *{box-sizing: border-box;}
 
 /* Top navigation bar */
 .topnav {
-    background-color: darkslategrey;
+    background-color: black;
     overflow: hidden;
+    border-bottom: 1px solid ivory;
+    border-color: #ddd;
 }
 .topnav a {
     float: left;
-    color: whitesmoke;
     text-align: center;
-    font-size: 17px;
+    font-size: 19px;
     padding: 15px 15px;
+    text-decoration: none;
 }
-.topnav a:hover {
-    background-color: #ddd;
+/* .topnav a:hover {
     color: black;
+    background-color: #ddd;
+} */
+
+.topnav a.active:hover {
+    color: black;
+    background-color: #ddd;
+    /* border-right: 1px solid whitesmoke; */
 }
 .topnav a.active {
-     background-color: darkgray;
-     color: black;
+     color: ivory;
 }
 
 /* Main Title on a page */
 .title {
     color: black;
-    padding: 15px 15px;
+    padding: 55px 0px;
     text-align: center;
     font-size: 2.5rem;
+    text-transform: capitalize;
 }
 
 form {
     /* Center the form on the page */
     margin: 0 auto;
-    /* width: 60%; */
-    width: 70%;
+    width: 100%;
     /* Form outline */
     padding: 1em;
-    border: 1px solid #CCC;
+    border: 2px solid #CCC;
     border-radius: 1em;
+    /* box-shadow: 10px 10px 25px #333333; */
 }
 
 .form-part {
-    background-color: grey;
+    /* background-color: lightsteelblue; */
+    /* background-color: #2193b0; */
+    background-color: #2297b1;
     padding: 20px 20px;
     border-radius: 1em;
+    /* box-shadow: inset 10px 10px 25px #333333; */
+    /* box-shadow: inset 10px 10px 25px lightslategray; */
 }
 
 .subtitle {
     color: black;
-    margin-top: 10px;
-    padding-bottom: 1px;
+    /* margin-top: 10px; */
+    padding-bottom: 5px;
     text-align: left;
     font-size: 1.5rem;
+    text-transform: capitalize;
 }
 /* Style the form - display items horizontally */
 .form-row {
@@ -65,7 +80,7 @@ form {
 }
 /* Add margins for each label */
 .form-row label {
-    margin: 5px 0px 5px 0;
+    margin: 5px 0px 5px 0px;
     font-size: 19px;
     color: ivory; 
     font-weight: bold;
@@ -86,19 +101,10 @@ form {
     width: 60%;
 }
 
-.form-row-select-field {
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
+.label-right-column select {
+   margin-bottom: -10px;
 }
-.form-row-select-field label {
-    margin: 5px 0px 5px 0;
-    font-size: 19px;
-    color: ivory; 
-    font-weight: bold;
-    width: 40%;
-}
-.form-row-select-field select {
+.form-select-field {
     vertical-align: middle;
     margin: 5px 0px 5px 0;
     padding: 2.5px;
@@ -124,32 +130,20 @@ instead of horiz on screens that are less than 800px wide */
         align-items: stretch;
     }
 
-    .form-row label {
-        margin: 5px 10px 5px 0;
-        width: 100%;
-    }
-    .form-row input {
-        margin: 0px 10px 0px 0;
-        width: 100%;
-    }
     .form-row {
         flex-direction: column;
         align-items: stretch;
     }
-    .form-row-select-field {
-        flex-direction: column;
-        align-items: stretch;
-    }
-    .form-row-select-field label {
-        margin: 5px 10px 5px 0;
+    .form-row label {
         width: 100%;
     }
-    .form-row-select-field select {
-        margin: 0px 10px 0px 0;
+    .form-row input {
         width: 100%;
     }
+    /* .label-right-column select {
+        width: 100%;
+    }  */
     .label-right-column {
-        margin: 5px 10px 5px 0;
         width: 100%;
     }
 }
@@ -158,7 +152,7 @@ instead of horiz on screens that are less than 800px wide */
     display: none;
     width: 100%;
     margin-top: .25rem;
-    font-size: 80%;
+    font-size: 70%;
     color: red;
 }
 /* Button "Oblicz" */
@@ -194,29 +188,29 @@ h4 {
     font-size: 1.2rem;
 }
 .graphic-results header{
-    margin: 0 auto;
-    width: 88%;
+    visibility: hidden;
+    padding-top: 25px;
+    margin-left: 20px;
 }
 /* Graphic results */
-.graphic-results {
-    padding-left: 10%;
-    padding-right: 10%;
-}
 /* Chart */
 #myChart {
     display: none;
-    /* position:relative; 
-    height: 400px; */
 }
 /* Tło części Podsumowanie */
 .form-part-summary {
-    background-color: grey;
+    /* display: none; */
+    visibility: hidden;
+    /* background-color: #2193b0; */
+    background-color: #4ca1af;
     padding: 20px 20px;
-    border-radius: 1em;
-    width: 70%;
+    border-radius: 0.3em;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
-
+    /* box-shadow: inset 10px 10px 25px #333333; */
+    box-shadow: 10px 10px 25px #333333;
+    /* box-shadow: inset 10px 10px 25px lightslategrey; */
 }
 /* Tabela wyników */
 .table-summary {
@@ -236,9 +230,10 @@ h4 {
 /* Tabela Podsumowanie - labels */
 .summary-header {
     text-align: inherit;
+    font-size: 18px;
 }
-/* Nagłówki tabeli Wyniki i labels tabeli Podsumowanie */
-th {
+/* Nagłówki tabeli Wyniki */
+#result-table-summary th{
     text-align: center;
     font-size: 18px;
 }
@@ -248,16 +243,23 @@ td {
     font-size: 18px;
 }
 
-/* .result-data {
-    text-align: center;
-} */
-
 /* Footer */
 footer {
-    display: block;
-    bottom: 10px;
-    text-align: left;
-    padding: 0 15px;
-    background-color: darkgray;
-    color: whitesmoke;
+    /* display: block; */
+    width: 100%;
+    height: auto;
+    text-align: center;
+    font-style: oblique;
+    padding: 1px 15px 30px 15px;
+    /* background-image: linear-gradient(to right, #2193b0, #6dd5ed); */
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    
+    /* border-radius: 0.5em; */
+    /* border: 1px solid #4ca1af; */
+    /* box-shadow:inset 10px 10px 25px #43a4b3; */
+    border-bottom: 1px solid darkgrey;
+    border-top: 1px solid darkgrey;
+
 }

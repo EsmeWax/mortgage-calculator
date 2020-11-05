@@ -86,7 +86,8 @@ function calc(period, creditValue, percentage, myDate) {
     //console.log("1" + " : " + parseFloat(capitalMonthly).toFixed(2) + " : " + parseFloat(firstMonthInterest).toFixed(2) + " : " + parseFloat(firstMonthlyInstallment).toFixed(2) + " : " + parseFloat(creditValue).toFixed(2) + " : " + parseFloat(sumInterestMonthly).toFixed(2)); 
     // Obiekt z pierwszym wierszem tabeli
     let myFirstTableObject = {
-        Date: myDate.getFullYear() + "-" + (myDate.getMonth()+1),
+        // Date: myDate.getFullYear() + "-" + (myDate.getMonth()+1),
+        Date: myDate.getFullYear() + "-" + (myDate.getMonth() < 9 ? "0" + (myDate.getMonth()+1) : (myDate.getMonth()+1)),
         capitalMonthly: parseFloat(capitalMonthly).toFixed(2),
         interestMonthly: parseFloat(firstMonthInterest).toFixed(2),
         monthlyInstallment: parseFloat(firstMonthlyInstallment).toFixed(2)
@@ -112,7 +113,8 @@ function calc(period, creditValue, percentage, myDate) {
         let myNewDate = new Date(myDate.setMonth(myDate.getMonth()+1));
         // wypełnianie obiektu 
         let myTableObject = {
-            Date: myNewDate.getFullYear() + "-" + (myNewDate.getMonth()+1),
+            // Date: myNewDate.getFullYear() + "-" + (myNewDate.getMonth()+1),
+            Date: myNewDate.getFullYear() + "-" + (myNewDate.getMonth() < 9 ? "0" + (myNewDate.getMonth()+1) : (myNewDate.getMonth()+1)),
             capitalMonthly: parseFloat(capitalMonthly).toFixed(2),
             interestMonthly: parseFloat(interestMonthly).toFixed(2),
             monthlyInstallment: parseFloat(monthlyInstallment).toFixed(2)
@@ -156,7 +158,8 @@ function calcConstant(period, creditValue, percentage, myDate) {
     //console.log("1" + " : " + parseFloat(capitalMonthly).toFixed(2) + " : " + parseFloat(firstMonthInterest).toFixed(2) + " : " + parseFloat(monthlyInstallment).toFixed(2) + " : " + parseFloat(creditValue).toFixed(2) + " : " + parseFloat(sumInterestMonthly).toFixed(2)); 
     // Obiekt z pierwszym wierszem tabeli
     let myFirstTableObject = {
-        Date: myDate.getFullYear() + "-" + (myDate.getMonth()+1),
+        // Date: myDate.getFullYear() + "-" + (myDate.getMonth()+1),
+        Date: myDate.getFullYear() + "-" + (myDate.getMonth() < 9 ? "0" + (myDate.getMonth()+1) : (myDate.getMonth()+1)),
         capitalMonthly: parseFloat(capitalMonthly).toFixed(2),
         interestMonthly: parseFloat(firstMonthInterest).toFixed(2),
         monthlyInstallment: parseFloat(monthlyInstallment).toFixed(2)
@@ -180,7 +183,8 @@ function calcConstant(period, creditValue, percentage, myDate) {
         let myNewDate = new Date(myDate.setMonth(myDate.getMonth()+1));
         // wypełnianie obiektu 
         let myTableObject = {
-            Date: myNewDate.getFullYear() + "-" + (myNewDate.getMonth()+1),
+            // Date: myNewDate.getFullYear() + "-" + (myNewDate.getMonth()+1),
+            Date: myNewDate.getFullYear() + "-" + (myNewDate.getMonth() < 9 ? "0" + (myNewDate.getMonth()+1) : (myNewDate.getMonth()+1)),
             capitalMonthly: parseFloat(capitalMonthly).toFixed(2),
             interestMonthly: parseFloat(interestMonthly).toFixed(2),
             monthlyInstallment: parseFloat(monthlyInstallment).toFixed(2)

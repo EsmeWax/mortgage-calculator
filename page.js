@@ -299,7 +299,8 @@ function makeMyChart(Map) {
             responsive: true,
             legend: {
                 labels: {
-                    fontColor: '#fff',
+                    fontColor: '#000000',
+                    // fontColor: '#fff',
                     fontSize: 16
                 }
             },
@@ -307,26 +308,32 @@ function makeMyChart(Map) {
                 yAxes: [{
                     ticks: {
                         beginAtZero: true,
-                        fontColor: '#fff',
+                        fontColor: '#000000',
+                        // fontColor: '#fff',
                         fontSize: 14
                     },
                     stacked: true,
                     gridLines: {
-                        color: '#fff',
-                        zeroLineColor: '#fff',
+                        color: '#000000',
+                        // color: '#fff',
+                        // zeroLineColor: '#fff',
+                        zeroLineColor: '#000000',
                         borderDash: [8, 4]
                     }
                 }],
                 xAxes: [{
                     ticks: {
-                        fontColor: '#fff',
+                        fontColor: '#000000',
+                        // fontColor: '#fff',
                         maxRotation: 60,
                         minRotation: 0,
                         fontSize: 14
                     },
                     gridLines: {
-                        color: '#fff',
-                        zeroLineColor: '#fff',
+                        color: 'black',
+                        // color: '#fff',
+                        // zeroLineColor: '#fff',
+                        zeroLineColor: '#000000',
                         borderDash: [8, 4]
                     }
                 }],

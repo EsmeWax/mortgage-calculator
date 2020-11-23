@@ -28,15 +28,15 @@
                                 <div class="form-row">
                                     <label for="credit-value" class="label-left-column">Kwota kredytu:</label>
                                     <div class="label-right-column">
-                                        <input name="credit-value" required pattern="/^[+]?(?!0\d)[0-9]*\.?[0-9]+$/" id="credit-value" type="number" value="400000">
-                                        <div class="valid-feedback">Pole wymagane</div>
+                                        <input name="credit-value" required pattern="/^[+]?(?!0\d)[0-9]*\.?[0-9]+$/" id="credit-value" type="number" onfocusout='formValidation()' value="400000" min="1">
+                                        <div></div>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <label for="credit-duration" class="label-left-column">Okres spłaty:</label>
                                     <div class="label-right-column">
-                                        <input name="credit-duration" required pattern="/^[+]?(?!0\d)[0-9]*\.?[0-9]+$/" id="credit-duration" type="number" value="240">
-                                        <div class="valid-feedback">Pole wymagane</div>
+                                        <input name="credit-duration" required pattern="/^[+]?(?!0\d)[0-9]*\.?[0-9]+$/" id="credit-duration" type="number" onfocusout='formValidation1()' value="240" min="1" max="420">
+                                        <div></div>
                                     </div>
                                 </div>
                                 <div class="form-row">
@@ -53,22 +53,22 @@
                                 <div class="form-row">
                                     <label for="bank-margin" class="label-left-column">Marża banku [%]:</label>
                                     <div class="label-right-column">
-                                        <input name="bank-margin" required pattern="/^[+]?(?!0\d)[0-9]*\.?[0-9]+$/" id="bank-margin" type="number" value="1.5">
-                                        <div class="valid-feedback">Pole wymagane</div>
+                                        <input name="bank-margin" required pattern="/^[+]?(?!0\d)[0-9]*\.?[0-9]+$/" id="bank-margin" type="number" onfocusout='formValidation2()' value="1.5" min="0.1" step="0.1">
+                                        <div></div>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <label for="wibor-start" class="label-left-column">Wibor aktualny [%]:</label>
                                     <div class="label-right-column">
-                                        <input name="wibor-start" required pattern="/^[+]?(?!0\d)[0-9]*\.?[0-9]+$/" id="wibor-start" type="number" value="1.5">
-                                        <div class="valid-feedback">Pole wymagane</div>
+                                        <input name="wibor-start" required pattern="/^[+]?(?!0\d)[0-9]*\.?[0-9]+$/" id="wibor-start" type="number" onfocusout='formValidation4()' value="1.5" min="0.1" step="0.1">
+                                        <div></div>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <label for="service-charge" class="label-left-column">Prowizja banku [%]:</label>
                                     <div class="label-right-column">
-                                        <input name="service-charge" required pattern="/^[+]?(?!0\d)[0-9]*\.?[0-9]+$/" id="service-charge" type="number" value="0.5">
-                                        <div class="valid-feedback">Pole wymagane</div>
+                                        <input name="service-charge" required pattern="/^[+]?(?!0\d)[0-9]*\.?[0-9]+$/" id="service-charge" type="number" onfocusout='formValidation5()' value="0.5" min="0.1" step="0.1">
+                                        <div></div>
                                     </div>
                                 </div>
                                 <div class="form-row">

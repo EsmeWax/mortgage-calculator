@@ -360,3 +360,144 @@ function makeMyChart(Map) {
     });
 myChart.update();
 };
+
+/* Form validation solution 1 */
+function formValidation() {
+    // First input field
+    let creditValue = document.getElementById('credit-value').value;
+    let x = document.getElementsByClassName('label-right-column')[0];
+    if (creditValue == "" || creditValue == 0) { 
+        x.getElementsByTagName('div')[0].classList.add("invalid-feedback");
+        x.getElementsByTagName('div')[0].classList.remove("valid-feedback");
+        // x.getElementsByClassName('invalid-feedback')[0].style.display = "block";
+        x.getElementsByClassName('invalid-feedback')[0].innerHTML = "Pole wymagane (dodatnie wartości numeryczne) 1";
+    } 
+    else {
+        x.getElementsByTagName('div')[0].classList.remove("invalid-feedback");
+        x.getElementsByTagName('div')[0].classList.add("valid-feedback");
+        // x.getElementsByClassName('valid-feedback')[0].style.display = "none";
+        x.getElementsByClassName('valid-feedback')[0].innerHTML = "";
+    }
+};
+
+function formValidation1() {
+    // second input field
+    let creditDuration = document.getElementById('credit-duration').value;
+    let x = document.getElementsByClassName('label-right-column')[1];
+    // let maxValue = 420;
+    if (creditDuration == "" || creditDuration == 0) { 
+        x.getElementsByTagName('div')[0].classList.add("invalid-feedback");
+        x.getElementsByTagName('div')[0].classList.remove("valid-feedback");
+        x.getElementsByClassName('invalid-feedback')[0].innerHTML = "Pole wymagane (dodatnie wartości numeryczne) 2";
+    } 
+    else {
+        x.getElementsByTagName('div')[0].classList.remove("invalid-feedback");
+        x.getElementsByTagName('div')[0].classList.add("valid-feedback");
+        x.getElementsByClassName('valid-feedback')[0].innerHTML = "";
+    }
+};
+
+function formValidation2() {
+    // fourth input field
+    let bankMargin = document.getElementById('bank-margin').value;
+    let x = document.getElementsByClassName('label-right-column')[3];
+    // let maxValue = 100;
+    if (bankMargin == "" || bankMargin == 0) { 
+        x.getElementsByTagName('div')[0].classList.add("invalid-feedback");
+        x.getElementsByTagName('div')[0].classList.remove("valid-feedback");
+        x.getElementsByClassName('invalid-feedback')[0].innerHTML = "Pole wymagane (dodatnie wartości numeryczne) 3";
+    } 
+    else {
+        x.getElementsByTagName('div')[0].classList.remove("invalid-feedback");
+        x.getElementsByTagName('div')[0].classList.add("valid-feedback");
+        x.getElementsByClassName('valid-feedback')[0].innerHTML = "";
+    }
+};
+
+function formValidation4() {
+    // fourth input field
+    let wiborStart = document.getElementById('wibor-start').value;
+    let x = document.getElementsByClassName('label-right-column')[4];
+    // let maxValue = 100;
+    if (wiborStart == "" || wiborStart == 0) { 
+        x.getElementsByTagName('div')[0].classList.add("invalid-feedback");
+        x.getElementsByTagName('div')[0].classList.remove("valid-feedback");
+        x.getElementsByClassName('invalid-feedback')[0].innerHTML = "Pole wymagane (dodatnie wartości numeryczne) 4";
+    } 
+    else {
+        x.getElementsByTagName('div')[0].classList.remove("invalid-feedback");
+        x.getElementsByTagName('div')[0].classList.add("valid-feedback");
+        x.getElementsByClassName('valid-feedback')[0].innerHTML = "";
+    }
+};
+
+function formValidation5() {
+    // fifth input field
+    let commission = document.getElementById('service-charge').value;
+    let x = document.getElementsByClassName('label-right-column')[5];
+    // let maxValue = 100;
+    if (commission == "" || commission == 0) { 
+        x.getElementsByTagName('div')[0].classList.add("invalid-feedback");
+        x.getElementsByTagName('div')[0].classList.remove("valid-feedback");
+        x.getElementsByClassName('invalid-feedback')[0].innerHTML = "Pole wymagane (dodatnie wartości numeryczne) 5";
+    } 
+    else {
+        x.getElementsByTagName('div')[0].classList.remove("invalid-feedback");
+        x.getElementsByTagName('div')[0].classList.add("valid-feedback");
+        x.getElementsByClassName('valid-feedback')[0].innerHTML = "";
+    }
+};
+
+
+
+
+function formValidation0() {
+    // const input = document.querySelector('input');
+    // input.addEventListener('input', evt => {
+    //     const value = input.value;
+
+    let creditValue = document.getElementById('credit-value').value;
+    let creditDuration = document.getElementById('credit-duration').value;
+    let bankMargin = document.getElementById('bank-margin').value;
+    let wiborStart = document.getElementById('wibor-start').value; 
+    let commission = document.getElementById('service-charge').value;
+
+    //second input field
+    // if (creditDuration == "" || creditDuration == 0) {
+    //     window.alert("Please enter a valid number"); 
+    //     return false; 
+    // }
+    
+    // if (bankMargin == "") {
+    //     window.alert("Please enter a valid number"); 
+    //     return false; 
+    // } 
+    // if (wiborStart == "") {
+    //     window.alert("Please enter a valid number"); 
+    //     return false; 
+    // } 
+    // if (commission == "") {
+    //     alert("Please enter a valid number"); 
+    //     return false; 
+    // } 
+   
+// return true; 
+
+
+    // looping through each value of the form element
+    // let txt = "";
+    // for (let i = 0; i < document.forms[0].length; i++) {
+    //     txt = txt + document.forms[0].elements[i].value + "<br>";
+    // }
+    // console.log(txt);
+// };
+
+ // looping through each value of the form element
+    // for (let i = 0; i < document.forms[0].length; i++) {
+    //     document.forms[0].elements[i].value.addEventListener('input', function(e){
+    //         if (elements[i].value == "") {
+    //             window.alert("Please enter a valid number"); 
+    //             return false; 
+    //         } 
+    //     })
+};
